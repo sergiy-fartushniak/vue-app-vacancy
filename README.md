@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Deploy
+```
+npm run deploy
+```
+
+### Demo link
+ - [Demo Link](https://sergiy-fartushniak.github.io/vue-app-vacancy/)
