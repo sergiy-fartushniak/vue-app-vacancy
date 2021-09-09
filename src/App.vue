@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/vacancies">Vacancies</router-link>
     </div>
     <router-view/>
   </div>
@@ -29,4 +29,44 @@
     }
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #e9e6f2;
+  padding: 20px;
+  color: #4d457b;
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+h3 {
+  text-align: center;
+}
+
+label,
+p {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+%stretch-panel {
+  flex-grow: 1;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
 </style>
