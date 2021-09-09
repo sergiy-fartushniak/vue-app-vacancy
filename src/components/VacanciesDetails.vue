@@ -1,28 +1,54 @@
 <template>
-  <div class="VacanciesDetails">
-    <h2>Vacancie {{ vacancieId }} details:</h2>
 
-    <section class="VacanciesDetails__post">
-      <p>sunt aut facere repellat provident occaecati excepturi optio</p>
+  <div class="VacanciesDetails">
+    <div v-if="!vacancy">loading...</div>
+
+    <template v-else>
+      <p><strong>Position:</strong>{{vacancy.position}}</p>
+          <p><strong>Employment Type:</strong>{{vacancy.employmentType}}</p>
+          <p><strong>Status:</strong>{{vacancy.status}}</p>
+          <p><strong>Expirience:</strong>{{vacancy.experience}}</p>
+          <p><strong>Role:</strong>{{vacancy.role}}</p>
+          <p><strong>Salary:</strong>
+          {{vacancy.salaryFrom}} - {{vacancy.salaryTo}} {{vacancy.currency}}</p>
+          <p><strong>Languages:</strong>{{vacancy.languages}}</p>
+          <p><strong>Client Name:</strong>{{vacancy.clientName}}</p>
+          <p><strong>Skills:</strong>{{vacancy.desiredSkills}}</p>
+
+    <section class="VacanciesDetails__vacancy">
+      <p v-html="vacancy.descr"></p>
     </section>
+    </template>
   </div>
 </template>
 
 <script>
+import { getVacancyFromServer } from '@/api/vacancies';
+
 export default {
   name: 'VacanciesDetails',
-  setup() {
-
+  data() {
+    return {
+      vacancy: null,
+    };
   },
   props: {
-    vacancieId: Number,
+    vacancyId: String,
+  },
+  // async mounted() {
+  //   this.vacancy = await getVacancyFromServer(this.vacancyId);
+  // },
+  watch: {
+    async vacancyId() {
+      this.vacancy = await getVacancyFromServer(this.vacancyId);
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 .VacanciesDetails {
-&__post {
+&__vacancy {
     padding: 10px 0 15px;
   }
 

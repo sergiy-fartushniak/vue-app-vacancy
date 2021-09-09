@@ -7,19 +7,20 @@
       <div class="Vacancies__sidebar">
         <vacancies-list
           :vacancies="vacancies"
-          @vacancieSelected="setVacancieId"
+          @vacancySelected="setVacancyId"
+          :selected-vacancy-id="vacancyId"
         ></vacancies-list>
       </div>
 
-      <div class="Vacancies__content">
-        <vacancies-details :vacancie-id="vacancieId"></vacancies-details>
+      <div class="Vacancies__content" v-show="vacancyId">
+        <vacancies-details :vacancy-id="vacancyId"></vacancies-details>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import getVacancies from '@/api/vacancies';
+import { getVacanciesFromServer } from '@/api/vacancies';
 import VacanciesList from '@/components/VacanciesList.vue';
 import VacanciesDetails from '@/components/VacanciesDetails.vue';
 
@@ -27,7 +28,7 @@ export default {
   data() {
     return {
       vacancies: [],
-      vacancieId: 0,
+      vacancyId: '',
     };
   },
   components: {
@@ -35,11 +36,11 @@ export default {
     VacanciesDetails,
   },
   async mounted() {
-    this.vacancies = await getVacancies();
+    this.vacancies = await getVacanciesFromServer();
   },
   methods: {
-    setVacancieId(vacancieId) {
-      this.vacancieId = vacancieId;
+    setVacancyId(vacancyId) {
+      this.vacancyId = vacancyId;
     },
   },
 };
@@ -68,12 +69,22 @@ export default {
   }
 
   &__sidebar {
+    flex-grow: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
 
     flex-basis: 60%;
     border-color: blue;
   }
 
   &__content {
+    flex-grow: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
 
     flex-basis: 30%;
     border-color: green;

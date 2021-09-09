@@ -25,5 +25,10 @@ npm run lint
 npm run deploy
 ```
 
+### To statr proxy
+```
+npm run proxy
+```
+
 ### Demo link
  - [Demo Link](https://sergiy-fartushniak.github.io/vue-app-vacancy/)

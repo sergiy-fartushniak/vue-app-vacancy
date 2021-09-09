@@ -22,10 +22,10 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #aaa;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #000060;
     }
   }
 }
@@ -59,14 +59,6 @@ p {
 
 ul {
   padding: 0;
-}
-
-%stretch-panel {
-  flex-grow: 1;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: white;
 }
 
 </style>

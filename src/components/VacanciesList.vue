@@ -3,19 +3,32 @@
     <h2>Vacancies:</h2>
 
     <ul class="VacanciesList__list">
-      <li class="VacanciesList__item" v-for="vacancie of vacancies" :key="vacancie.id">
-        <div>
-          <b>[User #{{ vacancie.id }}]: </b>
-          {{ vacancie.title }}
+      <li class="VacanciesList__item" v-for="vacancy of vacancies" :key="vacancy.vacancyId">
+        <div class="VacanciesList__card">
+          <p><strong>Position:</strong>{{vacancy.position}}</p>
+          <p><strong>Employment Type:</strong>{{vacancy.employmentType}}</p>
+          <p><strong>Status:</strong>{{vacancy.status}}</p>
+          <p><strong>Expirience:</strong>{{vacancy.experience}}</p>
+          <p><strong>Role:</strong>{{vacancy.role}}</p>
+          <p><strong>Salary:</strong>
+          {{vacancy.salaryFrom}} - {{vacancy.salaryTo}} {{vacancy.currency}}</p>
         </div>
         <button
           type="button"
           class="VacanciesList__button button"
-          @click="openVacancie(vacancie.id)"
+          @click="openVacancy(vacancy.vacancyId)"
+          v-if="vacancy.vacancyId !== selectedVacancyId"
         >
-          Close/Open
+          Open
         </button>
-        <!-- <router-link to="/">Open</router-link> -->
+        <button
+          type="button"
+          class="VacanciesList__button button"
+          @click="openVacancy('')"
+          v-if="vacancy.vacancyId === selectedVacancyId"
+        >
+          Close
+        </button>
       </li>
     </ul>
   </div>
@@ -26,18 +39,18 @@ export default {
   name: 'VacanciesList',
   data() {
     return {
-      vacancieId: 0,
+      vacancyId: '',
     };
   },
   props: {
     vacancies: Array,
+    selectedVacancyId: String,
   },
   methods: {
-    openVacancie(vacancieId) {
-      this.$emit('vacancieSelected', vacancieId);
+    openVacancy(vacancyId) {
+      this.$emit('vacancySelected', vacancyId);
     },
   },
-
 };
 </script>
 
@@ -57,14 +70,15 @@ export default {
   }
 
   &__list {
+
     list-style: none;
     padding-left: 5px;
   }
 
   &__item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 5px;
@@ -72,8 +86,18 @@ export default {
     line-height: 1.5;
   }
 
+  &__card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  }
+
   &__button {
-    margin-left: 10px;
+    background-color: #000060;
+    color: #fafafa;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
   }
 }
 
