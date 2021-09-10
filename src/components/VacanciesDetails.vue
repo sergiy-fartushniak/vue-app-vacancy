@@ -4,19 +4,35 @@
     <div v-if="!vacancy">loading...</div>
 
     <template v-else>
-      <p><strong>Position:</strong>{{vacancy.position}}</p>
-          <p><strong>Employment Type:</strong>{{vacancy.employmentType}}</p>
-          <p><strong>Status:</strong>{{vacancy.status}}</p>
-          <p><strong>Expirience:</strong>{{vacancy.experience}}</p>
-          <p><strong>Role:</strong>{{vacancy.role}}</p>
-          <p><strong>Salary:</strong>
-          {{vacancy.salaryFrom}} - {{vacancy.salaryTo}} {{vacancy.currency}}</p>
-          <p><strong>Languages:</strong>{{vacancy.languages}}</p>
-          <p><strong>Client Name:</strong>{{vacancy.clientName}}</p>
-          <p><strong>Skills:</strong>{{vacancy.desiredSkills}}</p>
-
     <section class="VacanciesDetails__vacancy">
-      <p v-html="vacancy.descr"></p>
+      <p><strong>Position: </strong>{{vacancy.position}}</p>
+      <p><strong>Employment Type: </strong>{{vacancy.employmentType}}</p>
+      <p><strong>Status: </strong>{{vacancy.status}}</p>
+      <p><strong>Expirience: </strong>{{vacancy.experience}}</p>
+      <p><strong>Role: </strong>{{vacancy.role}}</p>
+      <p><strong>Salary: </strong>
+      {{vacancy.salaryFrom}} - {{vacancy.salaryTo}} {{vacancy.currency}}</p>
+      <p>
+        <ul class="VacanciesDetails__list">
+          <strong>Languages: </strong>
+          <li v-for="language in vacancy.languages" :key="language.name">
+          {{language.name}}: {{language.level}}
+          </li>
+          </ul>
+      </p>
+      <p><strong>Client Name: </strong>{{vacancy.clientName}}</p>
+      <p>
+        <ul class="VacanciesDetails__list">
+          <strong>Skills: </strong>
+          <li v-for="skill in vacancy.desiredSkills" :key="skill.skill">
+          {{skill.skill}}: {{skill.experience}}
+          </li>
+          </ul>
+      </p>
+      <div>
+        <h2>Description: </h2>
+        <p v-html="vacancy.descr"></p>
+      </div>
     </section>
     </template>
   </div>
@@ -35,9 +51,7 @@ export default {
   props: {
     vacancyId: String,
   },
-  // async mounted() {
-  //   this.vacancy = await getVacancyFromServer(this.vacancyId);
-  // },
+
   watch: {
     async vacancyId() {
       this.vacancy = await getVacancyFromServer(this.vacancyId);
@@ -49,15 +63,15 @@ export default {
 <style scoped lang="scss">
 .VacanciesDetails {
 &__vacancy {
-    padding: 10px 0 15px;
-  }
-
-  &__comments {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 10px 15px;
   }
 
   &__list {
     list-style: none;
+    text-align: left;
   }
 
   &__list-item {

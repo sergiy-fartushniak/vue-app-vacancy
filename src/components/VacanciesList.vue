@@ -5,12 +5,12 @@
     <ul class="VacanciesList__list">
       <li class="VacanciesList__item" v-for="vacancy of vacancies" :key="vacancy.vacancyId">
         <div class="VacanciesList__card">
-          <p><strong>Position:</strong>{{vacancy.position}}</p>
-          <p><strong>Employment Type:</strong>{{vacancy.employmentType}}</p>
-          <p><strong>Status:</strong>{{vacancy.status}}</p>
-          <p><strong>Expirience:</strong>{{vacancy.experience}}</p>
-          <p><strong>Role:</strong>{{vacancy.role}}</p>
-          <p><strong>Salary:</strong>
+          <p><strong>Position: </strong>{{vacancy.position}}</p>
+          <p><strong>Employment Type: </strong>{{vacancy.employmentType}}</p>
+          <p><strong>Status: </strong>{{vacancy.status}}</p>
+          <p><strong>Expirience: </strong>{{vacancy.experience}}</p>
+          <p><strong>Role: </strong>{{vacancy.role}}</p>
+          <p><strong>Salary: </strong>
           {{vacancy.salaryFrom}} - {{vacancy.salaryTo}} {{vacancy.currency}}</p>
         </div>
         <button

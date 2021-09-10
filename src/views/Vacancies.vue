@@ -75,7 +75,7 @@ export default {
     border-radius: 20px;
     background-color: white;
 
-    flex-basis: 60%;
+    flex-basis: 30%;
     border-color: blue;
   }
 
@@ -86,7 +86,7 @@ export default {
     border-radius: 20px;
     background-color: white;
 
-    flex-basis: 30%;
+    flex-basis: 60%;
     border-color: green;
   }
 }

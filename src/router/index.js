@@ -15,6 +15,7 @@ const routes = [
     name: 'Vacancies',
     component: () => import('../views/Vacancies.vue'),
   },
+
 ];
 
 const router = new VueRouter({
