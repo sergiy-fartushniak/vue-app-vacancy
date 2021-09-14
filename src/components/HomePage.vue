@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>{{ msg }}</h1>
+    <h1 v-if="userName">Name: {{userName}}</h1>
+    <h1 v-if="userPassword">Password: {{userPassword}}</h1>
   </div>
 </template>
 
@@ -8,7 +9,8 @@
 export default {
   name: 'HomePage',
   props: {
-    msg: String,
+    userName: String,
+    userPassword: String,
   },
 };
 </script>

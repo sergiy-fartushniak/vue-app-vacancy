@@ -10,10 +10,13 @@
     "proxy": "lcp --proxyUrl https://cleverstaff.net"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
     "local-cors-proxy": "^1.1.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-axios": "^3.3.6",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
