@@ -1,8 +1,9 @@
 <template>
   <div class="auth">
+    <div class="auth__container">
     <h1 class="auth__title">Вхід в систему</h1>
     <h4 class="auth__subtitle">Зручний сервіс, зручні поїздки! </h4>
-    <form class="auth__form">
+    <form class="auth__form" @submit.prevent="login">
       <label>
         <p class="input-text">Ім'я</p>
         <input
@@ -16,7 +17,7 @@
       <label>
         <p class="input-text">Пароль</p>
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="Введіть пароль"
           class="input"
@@ -33,17 +34,19 @@
       </label>
       <button
         class="login-button"
-        type="button"
-        @click="login"
+        type="submit"
+
       >
         Увійти
       </button>
     </form>
     <a class="help-link" href="#" >Потрібна допомога</a>
   </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'AuthPage',
   data() {
@@ -54,10 +57,11 @@ export default {
     };
   },
   methods: {
+
     login() {
-      this.$store.state.userName = this.userName;
-      this.$store.state.userPassword = this.userPassword;
-      console.log(this.$store.state.userName);
+      const { userName, userPassword } = this;
+      this.$store.dispatch('user_token', { phone: userName, code: userPassword })
+        .then(() => this.$router.push({ name: 'Vacancies' }));
     },
   },
 };
@@ -66,6 +70,17 @@ export default {
 <style scoped lang="scss">
 .auth {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rbga(75, 72, 72 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__container {
+  display: flex;
   flex-direction: column;
   align-items: center;
 
@@ -73,7 +88,7 @@ export default {
   background-color: #F0F4F4;
   border-radius: 10px;
   padding: 72px;
-
+  }
   &__title {
     margin: 0;
     font-size: 40px;

@@ -1,17 +1,14 @@
 <template>
   <div class="home">
-    <h1 v-if="userName">Name: {{userName}}</h1>
-    <h1 v-if="userPassword">Password: {{userPassword}}</h1>
+    <h1>Name: {{this.$store.state.userName}}</h1>
+    <h1>Password: {{this.$store.state.userPassword}}</h1>
+    <h1>Token: {{this.$store.state.isAuth}}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HomePage',
-  props: {
-    userName: String,
-    userPassword: String,
-  },
 };
 </script>
 

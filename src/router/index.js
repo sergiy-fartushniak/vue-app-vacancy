@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import Vacancies from '../views/Vacancies.vue';
 import AuthPage from '../views/Auth.vue';
 
 Vue.use(VueRouter);
@@ -14,7 +15,7 @@ const routes = [
   {
     path: '/vacancies',
     name: 'Vacancies',
-    component: () => import('../views/Vacancies.vue'),
+    component: Vacancies,
   },
   {
     path: '/auth',
